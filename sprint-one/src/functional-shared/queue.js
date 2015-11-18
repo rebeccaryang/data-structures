@@ -13,7 +13,8 @@ var Queue = function() {
 
 var queueMethods = {
   enqueue:function(val){
-
+    this.queueSize++;
+    this.end++;
   },
   dequeue: function(){
 
