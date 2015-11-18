@@ -13,6 +13,11 @@ var stackMethods = {
   },
   size:function(){
     return this.stackSize;
+  },
+  pop:function(){
+    if(this.stackSize > 0){
+      this.stackSize--;
+    }
   }
 };
 
