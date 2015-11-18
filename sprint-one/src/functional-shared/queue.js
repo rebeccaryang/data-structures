@@ -3,7 +3,7 @@ var Queue = function() {
   // but try not not reference your old code in writing the new style.
   var obj = {};
   obj.queueSize = 0;
-  obj.beginning = 0;
+  obj.beginning = 1;
   obj.end = 0;
 
   _.extend(obj,queueMethods);
@@ -15,10 +15,17 @@ var queueMethods = {
   enqueue:function(val){
     this.queueSize++;
     this.end++;
+    this[this.end] = val;
   },
   dequeue: function(){
-    this.queueSize--;
-    this.beginning--;
+    if(this.queueSize>0){
+      var dequeuedValue = this[this.beginning];
+      delete this[this.beginning];
+      this.queueSize--;
+      this.beginning++;
+      return dequeuedValue;
+
+    }
   },
   size: function(){
     return this.queueSize;
