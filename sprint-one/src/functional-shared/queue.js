@@ -17,7 +17,8 @@ var queueMethods = {
     this.end++;
   },
   dequeue: function(){
-
+    this.queueSize--;
+    this.beginning--;
   },
   size: function(){
     return this.queueSize;
