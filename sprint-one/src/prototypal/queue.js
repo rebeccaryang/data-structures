@@ -13,7 +13,12 @@ var queueMethods = {
     this.end++;
     this.queueSize++;
   },
-  dequeue:function(){},
+  dequeue:function(){
+    if(this.queueSize > 0){
+      this.beginning++;
+      this.queueSize--;
+    }
+  },
   size:function(){
     return this.queueSize;
   }
