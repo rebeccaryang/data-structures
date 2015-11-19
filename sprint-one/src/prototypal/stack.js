@@ -10,11 +10,16 @@ var Stack = function() {
 var stackMethods = {
   pop: function(){
     if(this.stackSize>0){
+      var poppedOff = this[this.stackSize];
+      delete this[this.stackSize];
       this.stackSize--;
+      return poppedOff;
+
     }
   },
   push: function(val){
     this.stackSize++;
+    this[this.stackSize] = val;
   },
   size: function(){
     return this.stackSize;
