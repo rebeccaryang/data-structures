@@ -9,7 +9,9 @@ var Stack = function() {
 
 var stackMethods = {
   pop: function(){
-
+    if(this.stackSize>0){
+      this.stackSize--;
+    }
   },
   push: function(val){
     this.stackSize++;
