@@ -12,7 +12,7 @@ var Graph = function() {
 // Add a node to the graph, passing in the node's value.
 Graph.prototype.addNode = function(node) {
   this[node] = node;
-  this[node][node] = 1;
+  this[node] = {node:1};
 };
 
 // ------------------------
@@ -33,16 +33,26 @@ Graph.prototype.removeNode = function(node) {
 // ------------------------
 // Returns a boolean indicating whether two specified nodes are connected.  Pass in the values contained in each of the two nodes.
 Graph.prototype.hasEdge = function(fromNode, toNode) {
+  if(this[fromNode][toNode] === 1) {
+    return true;
+  }
+  else {
+    return false;
+  }
 };
 
 // ------------------------
 // Connects two nodes in a graph by adding an edge between them.
 Graph.prototype.addEdge = function(fromNode, toNode) {
+  this[fromNode][toNode] = 1;
+  this[toNode][fromNode] = 1;
 };
 
 // ------------------------
 // Remove an edge between any two specified (by value) nodes.
 Graph.prototype.removeEdge = function(fromNode, toNode) {
+  this[fromNode][toNode] = 0;
+  this[toNode][fromNode] = 0;
 };
 
 // ------------------------
