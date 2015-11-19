@@ -9,14 +9,18 @@ var Queue = function() {
 };
 
 var queueMethods = {
-  enqueue:function(){
+  enqueue:function(val){
     this.end++;
     this.queueSize++;
+    this[this.end] = val;
   },
   dequeue:function(){
     if(this.queueSize > 0){
+      var dequeued = this[this.beginning];
+      delete this[this.beginning];
       this.beginning++;
       this.queueSize--;
+      return dequeued;
     }
   },
   size:function(){
