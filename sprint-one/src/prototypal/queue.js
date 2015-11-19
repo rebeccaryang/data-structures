@@ -9,7 +9,10 @@ var Queue = function() {
 };
 
 var queueMethods = {
-  enqueue:function(){},
+  enqueue:function(){
+    this.end++;
+    this.queueSize++;
+  },
   dequeue:function(){},
   size:function(){
     return this.queueSize;
