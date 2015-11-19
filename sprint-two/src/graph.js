@@ -10,9 +10,9 @@ var Graph = function() {
 
 // ------------------------
 // Add a node to the graph, passing in the node's value.
-Graph.prototype.addNode = function(node) {
-  this[node] = node;
-  this[node] = {node:1};
+Graph.prototype.addNode = function(node) {    //to store a node within Graph
+  this[node] = {};
+  this[node][node] = 1; //to store relationship to itself
 };
 
 // ------------------------
@@ -58,6 +58,9 @@ Graph.prototype.removeEdge = function(fromNode, toNode) {
 // ------------------------
 // Pass in a callback which will be executed on each node of the graph.
 Graph.prototype.forEachNode = function(cb) {
+  _.each(this,function(node,key){
+    cb(key);
+  });
 };
 
 /*
