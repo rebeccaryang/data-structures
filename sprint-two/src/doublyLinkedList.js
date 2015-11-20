@@ -16,7 +16,9 @@ var DoublyLinkedList = function() {
 
     var traverseObject = function(object){
       if(object.next === null){
-        object.next = Node(value);
+        var toBeAddedTail = Node(value);
+        toBeAddedTail.previous = object;
+        object.next = toBeAddedTail;
       }
       else{
         traverseObject(object.next);
@@ -24,13 +26,15 @@ var DoublyLinkedList = function() {
     }
 
 
-
-
     if(list.head === null){
-      this.head = Node(value);
+      var toBeAddedHeadNull = Node(value);
+      toBeAddedHeadNull.previous = null;
+      this.head = toBeAddedHeadNull;
+
     } else {
       traverseObject(this.head);
     }
+
     this.tail = Node(value);
   };
 
@@ -60,11 +64,25 @@ var DoublyLinkedList = function() {
   };
 
   list.removeTail = function(){
+     //traverse down the list
+     var traverseRemoval = function(object){
+        if(object.next === null){
+          //remove the object
+          // object.previous.next = null; 
+        }
 
+     }
   };
 
   list.addToHead = function(value) {
-
+    var toBeAdded = Node(value);
+    //var temp = this.head;
+    //var tempJSON = JSON.stringify(temp);
+    //tempJSON = JSON.parse(tempJSON);
+    this.head.previous = toBeAdded;
+    toBeAdded.next = this.head;
+    toBeAdded.previous = null;
+    this.head = toBeAdded;
   };
 
   return list;
@@ -75,6 +93,7 @@ var Node = function(value) {
 
   node.value = value;
   node.next = null;
+  node.previous = null;
 
   return node;
 };
