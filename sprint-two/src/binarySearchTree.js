@@ -52,9 +52,32 @@ var methods = {
     traversal(this);
   },
   depthFirstLog:function(cb){
-
+    var callbackTraversal = function(tree){
+      cb(tree.value);
+      if(tree.left !== null){
+        callbackTraversal(tree.left);
+      }
+      if(tree.right !== null){
+        callbackTraversal(tree.right);
+      }
+    }
+    callbackTraversal(this);  
   }
+
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*
