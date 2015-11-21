@@ -99,7 +99,9 @@ var DoublyLinkedList = function() {
      } else { 
       var removed = list.tail.value;
       list.tail = list.tail.previous;
-
+      if(list.tail !== null){
+        list.tail.next = null;
+      };
       return removed;
      }
      

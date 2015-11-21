@@ -54,6 +54,7 @@ describe('doublyLinkedList', function() {
     linkedList.removeTail();
     expect(linkedList.contains(4)).to.equal(false);
     expect(linkedList.contains(5)).to.equal(false);
+    expect(linkedList.contains(6)).to.equal(true);
   });
 
   // New tests below for doubly linked lists
