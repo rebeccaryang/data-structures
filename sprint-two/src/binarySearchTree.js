@@ -3,6 +3,8 @@ var BinarySearchTree = function(value) {
   bst.left = null;
   bst.right = null;
   bst.value = value;
+  bst.maxDepth = 0;
+  bst.minDepth = 0;
   return bst;
 };
 
@@ -62,7 +64,11 @@ var methods = {
       }
     }
     callbackTraversal(this);  
+  },
+  rebalance:function(){
+    
   }
+
 
 };
 
