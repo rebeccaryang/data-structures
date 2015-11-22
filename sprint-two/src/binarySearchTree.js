@@ -66,7 +66,21 @@ var methods = {
     callbackTraversal(this);  
   },
   rebalance:function(){
-    
+    var storageArr = [];
+    var treeTraversal = function(node){
+      storageArr.push(node.value);
+      if(node.left !== null){
+        treeTraversal(node.left);
+      } 
+      if(node.right !== null){
+        treeTraversal(node.right);
+      }
+    }
+    treeTraversal(this);
+    storageArr.sort(function(a,b){
+      return a - b;
+    })
+    var splitIndex = Math.floor(storageArr.length/2);
   }
 
 
